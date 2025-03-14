@@ -41,9 +41,25 @@
 
 <div class="container">
     <h1>Access Blocked</h1>
-    <p>Sorry, the website <strong>polhaar.nl</strong> is blocked on this device.</p>
+    <p>Sorry, the website <strong id="blockedDomain">polhaar.nl</strong> is blocked on this device.</p>
     <p>If you believe this is an error, please contact your administrator or support team.</p>
 </div>
+
+<script>
+    // Function to get the query parameter value
+    function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Get the value of the query parameter "page"
+    const blockedDomain = getQueryParam('page');
+
+    // If the query parameter exists, replace the "polhaar.nl" text with the domain from the query
+    if (blockedDomain) {
+        document.getElementById('blockedDomain').textContent = blockedDomain;
+    }
+</script>
 
 </body>
 </html>
